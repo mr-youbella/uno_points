@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript</title>
+</head>
+
+<body class="m-2 bg-red-800">
+	<h1 class="text-center bg-blue-800 mx-auto br-4 border-2 border-white-800 rounded-lg w-1/2 text-white">Uno Points</h1>
+
+	<div class="p-4">
+		<div class="mb-4 grid grid-cols-9 gap-2">
+			<img src="uno_cards/uno-1.png" alt="uno-1" id="uno-1" class="w-80 rounded">
+			<img src="uno_cards/uno-2.png" alt="uno-2" id="uno-2" class="w-80 rounded">
+			<img src="uno_cards/uno-3.png" alt="uno-3" id="uno-3" class="w-80 rounded">
+			<img src="uno_cards/uno-4.png" alt="uno-4" id="uno-4" class="w-80 rounded">
+			<img src="uno_cards/uno-5.png" alt="uno-5" id="uno-5" class="w-80 rounded">
+			<img src="uno_cards/uno-6.png" alt="uno-6" id="uno-6" class="w-80 rounded">
+			<img src="uno_cards/uno-7.png" alt="uno-7" id="uno-7" class="w-80 rounded">
+			<img src="uno_cards/uno-8.png" alt="uno-8" id="uno-8" class="w-80 rounded">
+			<img src="uno_cards/uno-9.png" alt="uno-9" id="uno-9" class="w-80 rounded">
+		</div>
+		<div class="mb-4 grid grid-cols-4 gap-2">
+			<img src="uno_cards/uno.png" alt="uno-skipEveryone" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-wild" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-wildDrawTwo" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-wildDrawColor" class="w-80 rounded">
+		</div>
+		<div class="mb-4 grid grid-cols-5 gap-2">
+			<img src="uno_cards/uno.png" alt="uno-drawOne" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-drawFive" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-reverse" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-skipr" class="w-80 rounded">
+			<img src="uno_cards/uno.png" alt="uno-flip" class="w-80 rounded">
+		</div>
+	</div>
+
+	<div class="flex justify-center">
+		<input id="result" value="0" class="border-2 border-blue-500 rounded-lg text-center" readonly>
+	</div>
+
+	<form id="form">
+		<div class="p-2 mt-4 grid bg-blue-500 rounded-lg w-1/2 mx-auto">
+			<div class="flex">
+				<div class="flex-1">
+					<label for="player1" class="w-16">Younes:</label>
+				</div>
+				<div class="flex justify-end">
+					<input type="radio" id="player1" value="player1" name="player">
+				</div>
+			</div>
+			<div class="flex">
+				<div class="flex-1">
+					<label for="player2" class="w-16">Wissal:</label>
+				</div>
+				<div class="flex justify-end">
+					<input type="radio" id="player2" value="player2" name="player">
+				</div>
+			</div>
+			<input class="bg-green-500 border-2 border-white-800 rounded-lg w-1/2 mx-auto mt-4" type="submit" value="Enter">
+		</div>
+	</form>
+
+	<div class="mt-12 grid gap-2 bg-blue-500 p-4 w-1/2 mx-auto rounded-lg">
+		<label class="p-1 text-center mx-2 border-2 border-white-800 rounded-lg" for="player1-result">Player1</label>
+		<input class="border-2 border-blue-500 rounded-lg text-center w-1/2 mx-auto" value="0" type="text" id="player1-result" readonly>
+	</div>
+	<div class="mt-6 grid gap-2 bg-blue-500 p-4 w-1/2 mx-auto rounded-lg">
+		<label class="p-1 text-center mx-2 border-2 border-white-800 rounded-lg" for="player2-result">Player2</label>
+		<input class="border-2 border-blue-500 rounded-lg text-center w-1/2 mx-auto" value="0" type="text" id="player2-result" readonly>
+	</div>
+
+	<div class="grid p-2 w-1/2 mx-auto mt-4">
+		<input class="bg-red-400 border-2 border-white-800 text-white rounded-lg w-1/2 mx-auto" type="button" id="reset" value="Reset">
+	</div>
+
+</body>
+
+<script type="module" src="script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+
+</html>
