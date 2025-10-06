@@ -64,6 +64,16 @@ let uno_6 = document.getElementById("uno-6");
 let uno_7 = document.getElementById("uno-7");
 let uno_8 = document.getElementById("uno-8");
 let uno_9 = document.getElementById("uno-9");
+let uno_skipEveryone = document.getElementById("uno-skipEveryone");
+let uno_wild = document.getElementById("uno-wild");
+let uno_wildDrawTwo = document.getElementById("uno-wildDrawTwo");
+let uno_wildDrawColor = document.getElementById("uno-wildDrawColor");
+let uno_drawOne = document.getElementById("uno-drawOne");
+let uno_drawFive = document.getElementById("uno-drawFive");
+let uno_reverse = document.getElementById("uno-reverse");
+let uno_skip = document.getElementById("uno-skip");
+let uno_flip = document.getElementById("uno-flip");
+
 
 uno_1.onclick = () => (input.value = +input.value + 1);
 uno_2.onclick = () => (input.value = +input.value + 2);
@@ -74,6 +84,16 @@ uno_6.onclick = () => (input.value = +input.value + 6);
 uno_7.onclick = () => (input.value = +input.value + 7);
 uno_8.onclick = () => (input.value = +input.value + 8);
 uno_9.onclick = () => (input.value = +input.value + 9);
+
+uno_skipEveryone.onclick = () => (input.value = +input.value + 30);
+uno_wild.onclick = () => (input.value = +input.value + 40);
+uno_wildDrawTwo.onclick = () => (input.value = +input.value + 50);
+uno_wildDrawColor.onclick = () => (input.value = +input.value + 60);
+uno_drawOne.onclick = () => (input.value = +input.value + 10);
+uno_drawFive.onclick = () => (input.value = +input.value + 20);
+uno_reverse.onclick = () => (input.value = +input.value + 20);
+uno_skip.onclick = () => (input.value = +input.value + 20);
+uno_flip.onclick = () => (input.value = +input.value + 20);
 
 form.onsubmit = add_points;
 
