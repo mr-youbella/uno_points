@@ -68,6 +68,7 @@ let uno_skipEveryone = document.getElementById("uno-skipEveryone");
 let uno_wild = document.getElementById("uno-wild");
 let uno_wildDrawTwo = document.getElementById("uno-wildDrawTwo");
 let uno_wildDrawColor = document.getElementById("uno-wildDrawColor");
+
 let uno_drawOne = document.getElementById("uno-drawOne");
 let uno_drawFive = document.getElementById("uno-drawFive");
 let uno_reverse = document.getElementById("uno-reverse");
