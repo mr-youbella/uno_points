@@ -1,12 +1,9 @@
-function getValueCookie(name_cookie)
-{
+function getValueCookie(name_cookie) {
 	let i = 0;
 	let cookies = document.cookie.split(';');
 
-	while (i < cookies.length)
-	{
-		if (cookies[i].length > 0)
-		{
+	while (i < cookies.length) {
+		if (cookies[i].length > 0) {
 			let name = cookies[i].split('=')[0].trim();
 			let value = cookies[i].split('=')[1].trim();
 			if (name === name_cookie)
@@ -22,10 +19,12 @@ if (getValueCookie("player1") || getValueCookie("player2"))
 
 let form_names = document.getElementById("form_names");
 
-form_names.onsubmit = function (submit)
-{
-	let name_p1 = document.getElementById("name_player1").value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
-	let name_p2 = document.getElementById("name_player2").value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
+let name_p1 = document.getElementById("name_player1");
+let name_p2 = document.getElementById("name_player2");
+
+form_names.onsubmit = function (submit) {
+	name_p1.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
+	name_p2.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
 	submit.preventDefault();
 	if (!getValueCookie("player1"))
 		document.cookie = "player1=" + name_p1 + " / 0; " + "max-age=31536000; path=/";
@@ -33,3 +32,53 @@ form_names.onsubmit = function (submit)
 		document.cookie = "player2=" + name_p2 + " / 0; " + "max-age=31536000; path=/";
 	location.replace("add_points.html");
 };
+
+let file = document.getElementById("file");
+file.addEventListener('change', (event) => {
+	const fileList = event.target.files[0];
+	const reader = new FileReader();
+	reader.readAsText(fileList);
+	reader.onload = (e) =>
+	{
+		let content = e.target.result.split('\n');
+		document.cookie = "player1=" + content[0] + "; max-age=31536000; path=/";
+		document.cookie = "player2=" + content[1] + "; max-age=31536000; path=/";
+	};
+	location.reload();
+});
+
+let div = document.getElementById("main_div");
+
+function inputs(input)
+{
+	input.onfocus = function ()
+	{
+		if (div.classList.contains("bg-gray-200"))
+		{
+			div.classList.remove("bg-gray-200");
+			div.classList.add("bg-green-200");
+		}
+	}
+
+	input.onblur = function ()
+	{
+		if (div.classList.contains("bg-green-200"))
+		{
+			div.classList.add("bg-gray-200");
+			div.classList.remove("bg-green-200");
+		}
+	}
+}
+
+function add_file(e)
+{
+	if (e.key === 'Alt')
+	{
+		file.click();
+	}
+}
+
+document.addEventListener("keydown", add_file);
+
+inputs(name_p1);
+inputs(name_p2);

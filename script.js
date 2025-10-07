@@ -108,4 +108,12 @@ function ft_reset()
 	}
 }
 
+let value_cookie = getValueCookie("player1").split('/')[1].trim();
+let value_cookie2 = getValueCookie("player2").split('/')[1].trim();
+const content = name_p1 + " / " + +value_cookie + "\n" + name_p2 + " / " + +value_cookie2;
+const blob = new Blob([content], { type: "text/plain" });
+const link = document.getElementById("d");
+link.href = URL.createObjectURL(blob);
+link.download = "uno_points.log";
+
 reset.onclick = ft_reset;
