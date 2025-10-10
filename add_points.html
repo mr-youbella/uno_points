@@ -60,6 +60,8 @@
 				</div>
 			</div>
 			<input class="bg-green-500 border-2 border-white-800 rounded-lg w-1/2 mx-auto mt-4" type="submit" value="Enter">
+			<hr class="mt-4">
+			<input class="bg-red-300 border-2 border-white-800 rounded-lg w-full mx-auto mt-4" type="button" value="History" id="history">
 		</div>
 	</form>
 
@@ -76,10 +78,13 @@
 		<input class="bg-red-400 border-2 border-white-800 text-white rounded-lg w-1/2 mx-auto" type="button" id="reset" value="Reset">
 	</div>
 
-	<a id="d">Download</a>
+	<div class="m-4 flex justify-center">
+		<a id="d" class="text-white bg-blue-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600">Download Result</a>
+	</div>
 </body>
 
 <script type="module" src="script.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

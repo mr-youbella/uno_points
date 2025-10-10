@@ -1,20 +1,4 @@
-function getValueCookie(name_cookie) {
-	let i = 0;
-	let cookies = document.cookie.split(';');
-
-	while (i < cookies.length) {
-		if (cookies[i].length > 0) {
-			let name = cookies[i].split('=')[0].trim();
-			let value = cookies[i].split('=')[1].trim();
-			if (name === name_cookie)
-				return (value);
-		}
-		i++;
-	}
-	return (null);
-}
-
-if (getValueCookie("player1") || getValueCookie("player2"))
+if (localStorage.player1 &&  localStorage.player2)
 	location.replace("add_points.html");
 
 let form_names = document.getElementById("form_names");
@@ -23,13 +7,9 @@ let name_p1 = document.getElementById("name_player1");
 let name_p2 = document.getElementById("name_player2");
 
 form_names.onsubmit = function (submit) {
-	name_p1.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
-	name_p2.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("");
 	submit.preventDefault();
-	if (!getValueCookie("player1"))
-		document.cookie = "player1=" + name_p1 + " / 0; " + "max-age=31536000; path=/";
-	if (!getValueCookie("player2"))
-		document.cookie = "player2=" + name_p2 + " / 0; " + "max-age=31536000; path=/";
+	localStorage.player1 = name_p1.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("") + " / 0";
+	localStorage.player2 = name_p2.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("") + " / 0";
 	location.replace("add_points.html");
 };
 
@@ -41,8 +21,8 @@ file.addEventListener('change', (event) => {
 	reader.onload = (e) =>
 	{
 		let content = e.target.result.split('\n');
-		document.cookie = "player1=" + content[0] + "; max-age=31536000; path=/";
-		document.cookie = "player2=" + content[1] + "; max-age=31536000; path=/";
+		localStorage.player1 = content[0];
+		localStorage.player2 = content[1];
 	};
 	location.reload();
 });
@@ -73,9 +53,7 @@ function inputs(input)
 function add_file(e)
 {
 	if (e.key === 'Alt')
-	{
 		file.click();
-	}
 }
 
 document.addEventListener("keydown", add_file);
