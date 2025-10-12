@@ -138,3 +138,24 @@ function showHistory()
 }
 
 history.addEventListener("click", showHistory);
+
+function ft_editValue(player)
+{
+	if (player === "player1")
+	{
+		result_player1.removeAttribute("readonly");
+		result_player1.onblur = () => (localStorage.player1 = name_p1 + " / " + result_player1.value, result_player1.setAttribute("readonly", ""));
+	}
+	else
+	{
+		result_player2.removeAttribute("readonly");
+		result_player2.onblur = () => (localStorage.player2 = name_p2 + " / " + result_player2.value, result_player2.setAttribute("readonly", ""));
+	}
+}
+
+
+let edit_1 = document.getElementById("edit_1");
+let edit_2 = document.getElementById("edit_2");
+
+edit_1.onclick = () => ft_editValue("player1");
+edit_2.onclick = () => ft_editValue("player2");
