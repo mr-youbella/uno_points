@@ -17,19 +17,16 @@ let result_player2 = document.getElementById("player2-result");
 
 if (!localStorage.last_name)
 	localStorage.setItem("last_name", "");
-function add_points()
-{
+function add_points() {
 	let value_cookie;
 	let new_value;
-	if (form.player.value === "player1")
-	{
+	if (form.player.value === "player1") {
 		value_cookie = localStorage.player1.split('/')[1].trim();
 		new_value = +value_cookie + +input.value;
 		localStorage.last_name = name_p1 + " / " + new_value;
 		localStorage.player1 = name_p1 + " / " + new_value;
 	}
-	else
-	{
+	else {
 		value_cookie = localStorage.player2.split('/')[1].trim();
 		new_value = +value_cookie + +input.value;
 		localStorage.last_name = name_p2 + " / " + new_value;
@@ -84,32 +81,29 @@ uno_flip.onclick = () => (input.value = +input.value + 20);
 
 form.onsubmit = add_points;
 
-function ft_reset()
-{
+function ft_reset() {
 	Swal.fire(
-	{
-		title: "Are you sure?",
-		text: "You won't be able to revert this!",
-		icon: "warning",
-		showCancelButton: true,
-		confirmButtonColor: "#3085d6",
-		cancelButtonColor: "#d33",
-		confirmButtonText: "Yes, delete it!"
-	  }).then((result) =>
 		{
-			if (result.isConfirmed)
-			{
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		}).then((result) => {
+			if (result.isConfirmed) {
 				localStorage.player1 = name_p1 + " / 0";
 				localStorage.player2 = name_p2 + " / 0";
 				Swal.fire(
-				{
-					title: "Deleted!",
-					text: "Your file has been deleted.",
-					icon: "success",
-				}
-				).then(() => {location.reload()});
+					{
+						title: "Deleted!",
+						text: "Your file has been deleted.",
+						icon: "success",
+					}
+				).then(() => { location.reload() });
 			}
-	  });
+		});
 }
 
 let value_cookie = localStorage.player1.split('/')[1].trim();
@@ -124,33 +118,61 @@ reset.onclick = ft_reset;
 
 let history = document.getElementById("history");
 
-function showHistory()
-{
+function showHistory() {
 	if (!localStorage.last_name)
-		return ;
+		return;
 	Swal.fire
-	(
-		{
-			title: "Last history for " + localStorage.last_name.split(" / ")[0],
-			text: localStorage.last_name.split(" / ")[1] + " point",
-		}
-	);
+		(
+			{
+				title: "Last history for " + localStorage.last_name.split(" / ")[0],
+				text: localStorage.last_name.split(" / ")[1] + " point",
+			}
+		);
 }
 
 history.addEventListener("click", showHistory);
 
-function ft_editValue(player)
+function change_name(ls_player)
 {
-	if (player === "player1")
+	Swal.fire(
 	{
+		title: "Change name",
+		input: "text",
+		showCancelButton: true,
+		confirmButtonText: "Change",
+	}).then(
+	(result) => 
+	{
+		if (result.isConfirmed)
+			localStorage[ls_player] = result.value + " / " + localStorage[ls_player].split(" / ")[1];
+		Swal.fire(
+		{
+			title: "Change point",
+			input: "text",
+			showCancelButton: true,
+			confirmButtonText: "Change",
+		}).then(
+		(result) => 
+		{
+			if (result.isConfirmed)
+				localStorage[ls_player] = localStorage[ls_player].split(" / ")[0] + " / " + result.value;
+			location.reload();
+		});
+	});
+
+}
+
+function ft_editValue(player) {
+	if (player === "player1") {
 		result_player1.removeAttribute("readonly");
 		result_player1.focus();
+		change_name("player1");
 		result_player1.onblur = () => (localStorage.player1 = name_p1 + " / " + result_player1.value, result_player1.setAttribute("readonly", ""));
 	}
-	else
-	{
+	else {
 		result_player2.removeAttribute("readonly");
 		result_player2.focus();
+		change_name("player2");
 		result_player2.onblur = () => (localStorage.player2 = name_p2 + " / " + result_player2.value, result_player2.setAttribute("readonly", ""));
 	}
 }
