@@ -93,8 +93,8 @@ function ft_reset() {
 			confirmButtonText: "Yes, delete it!"
 		}).then((result) => {
 			if (result.isConfirmed) {
-				localStorage.player1 = name_p1 + " / 0";
-				localStorage.player2 = name_p2 + " / 0";
+				localStorage.removeItem("player1");
+				localStorage.removeItem("player2");
 				Swal.fire(
 					{
 						title: "Deleted!",
@@ -118,7 +118,9 @@ reset.onclick = ft_reset;
 
 let history = document.getElementById("history");
 
-function showHistory() {
+function showHistory()
+{
+	document.getElementById("music").play();
 	if (!localStorage.last_name)
 		return;
 	Swal.fire
@@ -163,17 +165,15 @@ function change_name(ls_player)
 }
 
 function ft_editValue(player) {
-	if (player === "player1") {
+	if (player === "player1")
+	{
 		result_player1.removeAttribute("readonly");
-		result_player1.focus();
 		change_name("player1");
-		result_player1.onblur = () => (localStorage.player1 = name_p1 + " / " + result_player1.value, result_player1.setAttribute("readonly", ""));
 	}
-	else {
+	else
+	{
 		result_player2.removeAttribute("readonly");
-		result_player2.focus();
 		change_name("player2");
-		result_player2.onblur = () => (localStorage.player2 = name_p2 + " / " + result_player2.value, result_player2.setAttribute("readonly", ""));
 	}
 }
 

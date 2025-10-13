@@ -1,4 +1,4 @@
-if (localStorage.player1 &&  localStorage.player2)
+if (localStorage.player1 && localStorage.player2)
 	location.replace("add_points.html");
 
 let form_names = document.getElementById("form_names");
@@ -6,7 +6,8 @@ let form_names = document.getElementById("form_names");
 let name_p1 = document.getElementById("name_player1");
 let name_p2 = document.getElementById("name_player2");
 
-form_names.onsubmit = function (submit) {
+form_names.onsubmit = function (submit)
+{
 	submit.preventDefault();
 	localStorage.player1 = name_p1.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("") + " / 0";
 	localStorage.player2 = name_p2.value.split('').map((value) => (value >= 'a' && value <= 'z' || value >= 'A' && value <= 'Z') ? value : '').join("") + " / 0";
@@ -14,8 +15,19 @@ form_names.onsubmit = function (submit) {
 };
 
 let file = document.getElementById("file");
-file.addEventListener('change', (event) => {
+file.addEventListener('change', (event) =>
+{
 	const fileList = event.target.files[0];
+	if (!fileList.name.match(/.log/))
+	{
+		Swal.fire
+		({
+  			icon: "error",
+  			title: "Oops...",
+ 			text: "just files .log",
+		});
+		return ;
+	}
 	const reader = new FileReader();
 	reader.readAsText(fileList);
 	reader.onload = (e) =>
@@ -39,7 +51,6 @@ function inputs(input)
 			div.classList.add("bg-green-200");
 		}
 	}
-
 	input.onblur = function ()
 	{
 		if (div.classList.contains("bg-green-200"))
