@@ -68,6 +68,27 @@ uno_6.onclick = () => (input.value = +input.value + 6);
 uno_7.onclick = () => (input.value = +input.value + 7);
 uno_8.onclick = () => (input.value = +input.value + 8);
 uno_9.onclick = () => (input.value = +input.value + 9);
+addEventListener("keydown", (event) => 
+{
+	if (event.key == 1)
+		input.value = +input.value + 1;
+	if (event.key == 2)
+		input.value = +input.value + 2;
+	if (event.key == 3)
+		input.value = +input.value + 3;
+	if (event.key == 4)
+		input.value = +input.value + 4;
+	if (event.key == 5)
+		input.value = +input.value + 5;
+	if (event.key == 6)
+		input.value = +input.value + 6;
+	if (event.key == 7)
+		input.value = +input.value + 7;
+	if (event.key == 8)
+		input.value = +input.value + 8;
+	if (event.key == 9)
+		input.value = +input.value + 9;
+});
 
 uno_skipEveryone.onclick = () => (input.value = +input.value + 30);
 uno_wild.onclick = () => (input.value = +input.value + 40);
@@ -176,9 +197,13 @@ function ft_editValue(player) {
 	}
 }
 
-
 let edit_1 = document.getElementById("edit_1");
 let edit_2 = document.getElementById("edit_2");
 
 edit_1.onclick = () => ft_editValue("player1");
 edit_2.onclick = () => ft_editValue("player2");
+
+addEventListener("storage", (event) => 
+{
+	localStorage[event.key] = event.oldValue;
+});

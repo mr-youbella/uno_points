@@ -71,3 +71,8 @@ document.addEventListener("keydown", add_file);
 
 inputs(name_p1);
 inputs(name_p2);
+
+addEventListener("storage", (event) => 
+{
+	localStorage[event.key] = event.oldValue;
+});
