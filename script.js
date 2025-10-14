@@ -120,7 +120,6 @@ let history = document.getElementById("history");
 
 function showHistory()
 {
-	document.getElementById("music").play();
 	if (!localStorage.last_name)
 		return;
 	Swal.fire
