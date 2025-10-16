@@ -207,3 +207,12 @@ addEventListener("storage", (event) =>
 {
 	localStorage[event.key] = event.oldValue;
 });
+
+document.getElementById("header").onclick = () =>
+{
+	let cards = document.getElementById("cards");
+	if (!cards.classList.contains("hidden"))
+		cards.classList.add("hidden");
+	else
+		cards.classList.remove("hidden");
+};
