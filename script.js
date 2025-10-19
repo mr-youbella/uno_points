@@ -15,21 +15,21 @@ let result_player1 = document.getElementById("player1-result");
 let result_player2 = document.getElementById("player2-result");
 
 
-if (!localStorage.last_name)
-	localStorage.setItem("last_name", "");
+if (!localStorage.history)
+	localStorage.setItem("history", "");
 function add_points() {
 	let value_cookie;
 	let new_value;
 	if (form.player.value === "player1") {
 		value_cookie = localStorage.player1.split('/')[1].trim();
 		new_value = +value_cookie + +input.value;
-		localStorage.last_name = name_p1 + " / " + new_value;
+		localStorage.history = name_p1 + " / " + new_value;
 		localStorage.player1 = name_p1 + " / " + new_value;
 	}
 	else {
 		value_cookie = localStorage.player2.split('/')[1].trim();
 		new_value = +value_cookie + +input.value;
-		localStorage.last_name = name_p2 + " / " + new_value;
+		localStorage.history = name_p2 + " / " + new_value;
 		localStorage.player2 = name_p2 + " / " + new_value;
 	}
 	input.value = 0;
@@ -113,16 +113,18 @@ function ft_reset() {
 			cancelButtonColor: "#d33",
 			confirmButtonText: "Yes, delete it!"
 		}).then((result) => {
-			if (result.isConfirmed) {
+			if (result.isConfirmed)
+			{
 				localStorage.removeItem("player1");
 				localStorage.removeItem("player2");
+				localStorage.removeItem("history");
 				Swal.fire(
 					{
 						title: "Deleted!",
 						text: "Your file has been deleted.",
 						icon: "success",
 					}
-				).then(() => { location.reload() });
+				).then(() => (location.reload()));
 			}
 		});
 }
@@ -141,13 +143,13 @@ let history = document.getElementById("history");
 
 function showHistory()
 {
-	if (!localStorage.last_name)
+	if (!localStorage.history)
 		return;
 	Swal.fire
 		(
 			{
-				title: "Last history for " + localStorage.last_name.split(" / ")[0],
-				text: localStorage.last_name.split(" / ")[1] + " point",
+				title: "Last history for " + localStorage.history.split(" / ")[0],
+				text: localStorage.history.split(" / ")[1] + " point",
 			}
 		);
 }
@@ -203,10 +205,7 @@ let edit_2 = document.getElementById("edit_2");
 edit_1.onclick = () => ft_editValue("player1");
 edit_2.onclick = () => ft_editValue("player2");
 
-addEventListener("storage", (event) => 
-{
-	localStorage[event.key] = event.oldValue;
-});
+addEventListener("storage", (event) => (localStorage[event.key] = event.oldValue));
 
 document.getElementById("header").onclick = () =>
 {
