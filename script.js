@@ -97,19 +97,20 @@ class UnoPoints
 	{
 		let	value_cookie;
 		let	new_value;
+		let date = new Date;
 
 		if (this.#form.player.value === "player1")
 		{
 			value_cookie = localStorage.player1.split('/')[1].trim();
 			new_value = +value_cookie + +this.#input.value;
-			localStorage.history = this.#name_player1 + " / " + new_value;
+			localStorage.history = this.#name_player1 + " / " + new_value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 			localStorage.player1 = this.#name_player1 + " / " + new_value;
 		}
 		else if (this.#form.player.value === "player2")
 		{
 			value_cookie = localStorage.player2.split('/')[1].trim();
 			new_value = +value_cookie + +this.#input.value;
-			localStorage.history = this.#name_player2 + " / " + new_value;
+			localStorage.history = this.#name_player2 + " / " + new_value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 			localStorage.player2 = this.#name_player2 + " / " + new_value;
 		}
 		else
@@ -160,7 +161,7 @@ class UnoPoints
 		Swal.fire
 		({
 			title: "Last history for " + localStorage.history.split(" / ")[0],
-			text: localStorage.history.split(" / ")[1] + " point",
+			text: localStorage.history.split(" / ")[1] + " point in " + localStorage.history.split(" / ")[2],
 		});
 	}
 
