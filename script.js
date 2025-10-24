@@ -103,14 +103,14 @@ class UnoPoints
 		{
 			value_cookie = localStorage.player1.split('/')[1].trim();
 			new_value = +value_cookie + +this.#input.value;
-			localStorage.history = this.#name_player1 + " / " + new_value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+			localStorage.history = this.#name_player1 + " / " + +this.#input.value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 			localStorage.player1 = this.#name_player1 + " / " + new_value;
 		}
 		else if (this.#form.player.value === "player2")
 		{
 			value_cookie = localStorage.player2.split('/')[1].trim();
 			new_value = +value_cookie + +this.#input.value;
-			localStorage.history = this.#name_player2 + " / " + new_value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
+			localStorage.history = this.#name_player2 + " / " + +this.#input.value + " / " + `${date.getDate()}/${(date.getMonth() + 1)}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`;
 			localStorage.player2 = this.#name_player2 + " / " + new_value;
 		}
 		else
@@ -214,4 +214,4 @@ class UnoPoints
 	}
 };
 
-let uno_points = new UnoPoints;
+new UnoPoints;
