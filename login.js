@@ -17,7 +17,7 @@ class Login
 
 			submit.preventDefault();
 			regular = /^[a-zA-Z\s]+$/;
-			if (regular.test(this.name_player1.value) && regular.test(this.name_player2.value) && this.name_player1.value.length <= 10 && this.name_player2.value.length <= 10)
+			if (regular.test(this.name_player1.value) && regular.test(this.name_player2.value) && this.name_player1.value.length <= 10 && this.name_player2.value.length <= 10 && this.name_player1.value !== this.name_player2.value)
 			{
 				localStorage.player1 = this.name_player1.value + " / 0";
 				localStorage.player2 = this.name_player2.value + " / 0";
@@ -29,7 +29,7 @@ class Login
 				({
 					icon: "error",
 					title: "Invalid names",
-					text: "Enter name just letters and Spaces and max 10 letter",
+					text: "Enter name just letters and Spaces and max 10 letter and not use same name",
 				})
 			}
 		};
